@@ -33,6 +33,20 @@
 	combos {
 		compatible = "zmk,combos";
 
+		// Both left thumb keys
+		combo_esc {
+			timeout-ms = <50>;
+			key-positions = <30 31>;
+			bindings = <&kp ESC>;
+		};
+
+		// Both right thumb keys
+		combo_delete {
+			timeout-ms = <50>;
+			key-positions = <32 33>;
+			bindings = <&kp DEL>;
+		};
+
 		// External left and right thumb keys
 		combo_caps_word {
 			timeout-ms = <50>;
@@ -97,7 +111,7 @@
 			//│  `	     │	-	│  =	   │  '	      │	 \	 │   │	|	│  "	   │  +	      │	 _	 │  ~	    │
 			   &kp GRAVE  &kp MINUS  &kp EQUAL  &kp SQT	&kp BSLH       &kp PIPE	 &kp DQT     &kp PLUS	&kp UNDER  &kp TILDE
 			//╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-							    &trans	&kp ESC	       &kp RCTRL  &trans
+							    &trans	&trans	       &kp RCTRL  &trans
 			//				   ╰──────────┴──────────╯   ╰──────────┴──────────╯
 			>;
 		};
