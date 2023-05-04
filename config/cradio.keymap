@@ -30,6 +30,17 @@
 		};
 	};
 
+	combos {
+		compatible = "zmk,combos";
+
+		// External left and right thumb keys
+		combo_caps_word {
+			timeout-ms = <50>;
+			key-positions = <31 32>;
+			bindings = <&caps_word>;
+		};
+	};
+
 	conditional_layers {
 		compatible = "zmk,conditional-layers";
 		tri_layer {
