@@ -6,8 +6,8 @@
 #include <dt-bindings/zmk/bt.h>
 
 // Home row mods macro
-#define HRML(k1,k2,k3,k4) &mt LSHFT k1	&mt LALT k2  &mt LGUI k3  &mt LCTRL k4
-#define HRMR(k1,k2,k3,k4) &mt RCTRL k1	&mt RGUI k2  &mt RALT k3  &mt RSHFT k4
+#define HRML(k1,k2,k3,k4) &hm LSHFT k1	&hm LALT k2  &hm LGUI k3  &hm LCTRL k4
+#define HRMR(k1,k2,k3,k4) &hm RCTRL k1	&hm RGUI k2  &hm RALT k3  &hm RSHFT k4
 
 // Custom lock keychord
 #define LOCK LG(LC(L))
@@ -17,14 +17,19 @@
 #define RIG	2
 #define TRI	3
 
-&mt {
-	flavor = "tap-preferred";
-	tapping-term-ms = <200>;
-	quick-tap-ms = <100>;
-	global-quick-tap;
-};
-
 / {
+	behaviors {
+		hm: homerow_mods {
+			compatible = "zmk,behavior-hold-tap";
+			label = "HOMEROW_MODS";
+			#binding-cells = <2>;
+			tapping-term-ms = <150>;
+			quick-tap-ms = <0>;
+			flavor = "tap-preferred";
+			bindings = <&kp>, <&kp>;
+		};
+	};
+
 	conditional_layers {
 		compatible = "zmk,conditional-layers";
 		tri_layer {
