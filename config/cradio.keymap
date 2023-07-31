@@ -6,8 +6,8 @@
 #include <dt-bindings/zmk/bt.h>
 
 // Home row mods macro
-#define HRML(k1,k2,k3,k4) &hm LSHFT k1	&hm LALT k2  &hm LGUI k3  &hm LCTRL k4
-#define HRMR(k1,k2,k3,k4) &hm RCTRL k1	&hm RGUI k2  &hm RALT k3  &hm RSHFT k4
+#define HRML(k1,k2,k3,k4)	&hml LSHFT k1 &hml LALT k2 &hml LGUI k3 &hml LCTRL k4
+#define HRMR(k1,k2,k3,k4)	&hmr RCTRL k1 &hmr RGUI k2 &hmr RALT k3 &hmr RSHFT k4
 
 // Custom lock keychord
 #define LOCK LG(LC(L))
@@ -19,15 +19,38 @@
 
 / {
 	behaviors {
-		hm: homerow_mods {
+		hml: homerow_mods_left {
 			compatible = "zmk,behavior-hold-tap";
-			label = "HOMEROW_MODS";
+			label = "homerow_mods_left";
 			#binding-cells = <2>;
-			flavor = "tap-preferred";
-			tapping-term-ms = <150>;
-			quick-tap-ms = <100>;
-			global-quick-tap;
+			flavor = "balanced";
+			tapping-term-ms = <280>;
+			quick-tap-ms = <0>;
+			/* global-quick-tap; */
 			bindings = <&kp>, <&kp>;
+			hold-trigger-key-positions = <
+				 5  6  7  8  9
+				15 16 17 18 19
+				25 26 27 28 29
+			>;
+			hold-trigger-on-release;
+		};
+
+		hmr: homerow_mods_right {
+			compatible = "zmk,behavior-hold-tap";
+			label = "homerow_mods_right";
+			#binding-cells = <2>;
+			flavor = "balanced";
+			tapping-term-ms = <280>;
+			quick-tap-ms = <0>;
+			/* global-quick-tap; */
+			bindings = <&kp>, <&kp>;
+			hold-trigger-key-positions = <
+				 0  1  2  3  4
+				10 11 12 13 14
+				20 21 22 23 24
+			>;
+			hold-trigger-on-release;
 		};
 	};
 
